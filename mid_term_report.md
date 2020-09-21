@@ -31,9 +31,9 @@
 
 ##### 5.1 Setting up and running N-BEATS model
 
-The `MAKEFILE` in the repository targets a docker-based environment for building and testing N-BEATS. However, we decided to do it without Docker as it has it's own time and memory related issues. We built N-BEATS from the source code using basic environment variables and figured out how to run various experiments on Google Colab and on the console. 
+The `MAKEFILE` in the repository targets a docker-based environment for building and testing N-BEATS. However, we decided to do it without Docker as it has it's own time and memory related issues. We built N-BEATS from the source code using basic environment variables and figured out how to run various experiments on Google Colab and on a Unix console. 
 
-Demon for running an experiment on a bash terminal using N-BEATS for the 1.3Mb M3 dataset which is manually downloaded and placed in `storage/datasets/m3/`. 
+Demo for running an experiment on a bash terminal using N-BEATS for the 1.3Mb M3 dataset which is manually downloaded and placed in `storage/datasets/m3/`. 
 
 ```sh
 git clone https://github.com/deeptavker/N-BEATS
@@ -49,7 +49,7 @@ python3 experiments/m3/main.py --config_path=storage/experiments/m3_generic/repe
 ```
 ##### 5.2 Analysis of Results
 
-##### 5.3 N-BEATS Code Structure
+##### 5.3 N-BEATS Code Structure & Review
 
 ```
 .
