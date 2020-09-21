@@ -27,7 +27,7 @@
 
 ------------------
 
-#### 5. N-BEATS Code review
+#### 5. N-BEATS Code review for m3 dataset
 
 ##### 5.1 Setting up and running N-BEATS model
 
@@ -49,25 +49,25 @@ python3 experiments/m3/main.py --config_path=storage/experiments/m3_generic/repe
 ```
 ##### 5.2 Analysis of Results
 
-##### 5.3 Code Structure Chart
+##### 5.3 Code Structure
 
 ```
 .
-├── common               ------------------- init file -----                                                                    
-│   ├── __init__.py     ------------------- init file -----
-│   ├── experiment.py     ------------------- init file -----
-│   ├── http_utils.py     ------------------- init file -----
-│   ├── metrics.py     ------------------- init file -----
-│   ├── sampler.py     ------------------- init file -----
-│   ├── settings.py     ------------------- init file -----
-│   └── torch     ------------------- init file -----
-│       ├── __init__.py     ------------------- init file -----
-│       ├── losses.py     ------------------- init file -----
-│       ├── ops.py     ------------------- init file -----
-│       └── snapshots.py     ------------------- init file -----
-├── datasets     ------------------- init file -----
-│   ├── __init__.py     ------------------- init file -----
-│   ├── m3.py     ------------------- init file -----
+├── common                                                                        
+│   ├── __init__.py    
+│   ├── experiment.py    
+│   ├── http_utils.py     
+│   ├── metrics.py     
+│   ├── sampler.py   
+│   ├── settings.py   
+│   └── torch    
+│       ├── __init__.py    
+│       ├── losses.py     
+│       ├── ops.py    
+│       └── snapshots.py    
+├── datasets    
+│   ├── __init__.py   
+│   ├── m3.py   
 ├── experiments
 │   ├── __init__.py
 │   ├── m3
@@ -107,6 +107,15 @@ python3 experiments/m3/main.py --config_path=storage/experiments/m3_generic/repe
 
         
 ```
+
+###### 5.3.1 common
+###### 5.3.2 datasets
+###### 5.3.2 experiments
+###### 5.3.2 models
+###### 5.3.2 notebooks
+###### 5.3.2 storage
+###### 5.3.2 summary
+###### 5.3.2 test
 
 
 ------------------
