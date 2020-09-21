@@ -49,10 +49,24 @@ python3 experiments/m3/main.py --config_path=storage/experiments/m3_generic/repe
 ```
 ##### 5.2 Analysis of Results
 
-##### 5.3 Code Structure
+##### 5.3 N-BEATS Code Structure
 
 ```
 .
+└── N-BEATS
+    ├── common
+    ├── datasets
+    ├── experiments
+    ├── models
+    ├── notebooks
+    ├── processed_files
+    ├── storage
+    ├── summary
+    └── test
+```
+
+###### 5.3.1 common
+```
 ├── common                                                                        
 │   ├── __init__.py    
 │   ├── experiment.py    
@@ -65,9 +79,16 @@ python3 experiments/m3/main.py --config_path=storage/experiments/m3_generic/repe
 │       ├── losses.py     
 │       ├── ops.py    
 │       └── snapshots.py    
+```
+###### 5.3.2 datasets
+```
 ├── datasets    
 │   ├── __init__.py   
 │   ├── m3.py   
+
+```
+###### 5.3.2 experiments
+```
 ├── experiments
 │   ├── __init__.py
 │   ├── m3
@@ -77,11 +98,21 @@ python3 experiments/m3/main.py --config_path=storage/experiments/m3_generic/repe
 │   │   └── main.py
 │   ├── model.py
 │   └── trainer.py
+```
+###### 5.3.2 models
+```
 ├── models
 │   ├── __init__.py
 │   └── nbeats.py
+```
+###### 5.3.2 notebooks
+```
 ├── notebooks
 │   ├── M3.ipynb
+```
+
+###### 5.3.2 storage
+```
 ├── storage
 │   ├── datasets
 │   │   └── m3
@@ -93,10 +124,16 @@ python3 experiments/m3/main.py --config_path=storage/experiments/m3_generic/repe
 │   │       └── training.npy
 │   ├── experiments
 │   └── test
+```
+###### 5.3.2 summary
+```
 ├── summary
 │   ├── __init__.py
 │   ├── m3.py
 │   └── utils.py
+```
+###### 5.3.2 test
+```
 └── test
     ├── __init__.py
     ├── __init__.pyc
@@ -104,18 +141,7 @@ python3 experiments/m3/main.py --config_path=storage/experiments/m3_generic/repe
         ├── __init__.py
         ├── __init__.pyc
         ├── test_m3.py
-
-        
 ```
-
-###### 5.3.1 common
-###### 5.3.2 datasets
-###### 5.3.2 experiments
-###### 5.3.2 models
-###### 5.3.2 notebooks
-###### 5.3.2 storage
-###### 5.3.2 summary
-###### 5.3.2 test
 
 
 ------------------
