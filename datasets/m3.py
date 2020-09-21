@@ -30,7 +30,7 @@ DATASET_URL = 'https://forecasters.org/data/m3comp/M3C.xls'
 FORECASTS_URL = 'https://forecasters.org/data/m3comp/M3Forecast.xls'
 
 DATASET_PATH = os.path.join(DATASETS_PATH, 'm3')
-DATASET_FILE_PATH = os.path.join(DATASET_PATH, url_file_name(DATASET_URL))
+DATASET_FILE_PATH = os.path.join(DATASET_PATH, 'M3C.xls')
 
 TRAINING_SET_CACHE_FILE_PATH = os.path.join(DATASET_PATH, 'training.npy')
 TEST_SET_CACHE_FILE_PATH = os.path.join(DATASET_PATH, 'test.npy')
@@ -90,11 +90,9 @@ class M3Dataset:
         """
         Download M3 dataset if doesn't exist.
         """
-        if os.path.isdir(DATASET_PATH):
-            logging.info(f'skip: {DATASET_PATH} directory already exists.')
-            return
+        
 
-        download(DATASET_URL, DATASET_FILE_PATH)
+        #download(DATASET_URL, DATASET_FILE_PATH)
         logging.info('Load and cache forecasts ...')
 
         ids = []
