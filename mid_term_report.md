@@ -29,9 +29,9 @@
 
 #### 5. N-BEATS Code review
 
-##### 5.1 Building N-BEATS
+##### 5.1 Setting up and running N-BEATS model
 
-The `MAKEFILE` in the repository targets a docker-based environment for building and testing N-BEATS. However, we decided to do it without Docker as it has it's own time and memory related issues. We built N-BEATS from the source code using basic environment variables and figured out how to run various experiments. 
+The `MAKEFILE` in the repository targets a docker-based environment for building and testing N-BEATS. However, we decided to do it without Docker as it has it's own time and memory related issues. We built N-BEATS from the source code using basic environment variables and figured out how to run various experiments on Google Colab and on the console. 
 
 Demon for running an experiment on a bash terminal using N-BEATS for the 1.3Mb M3 dataset which is manually downloaded and placed in `storage/datasets/m3/`. 
 
@@ -47,6 +47,67 @@ python3 experiments/m3/main.py --config_path=$PWD/experiments/m3/interpretable.g
 python3 experiments/m3/main.py --config_path=storage/experiments/m3_generic/repeat=3,lookback=4,loss=MAPE/config.gin run
 # GENERATED FILE for specific params : storage/experiments/m3_generic/repeat=3,lookback=4,loss=MAPE/forecast.csv
 ```
+##### 5.2 Analysis of Results
+
+##### 5.3 Code Structure Chart
+
+```
+.
+├── common               ------------------- init file -----                                                                    
+│   ├── __init__.py     ------------------- init file -----
+│   ├── experiment.py     ------------------- init file -----
+│   ├── http_utils.py     ------------------- init file -----
+│   ├── metrics.py     ------------------- init file -----
+│   ├── sampler.py     ------------------- init file -----
+│   ├── settings.py     ------------------- init file -----
+│   └── torch     ------------------- init file -----
+│       ├── __init__.py     ------------------- init file -----
+│       ├── losses.py     ------------------- init file -----
+│       ├── ops.py     ------------------- init file -----
+│       └── snapshots.py     ------------------- init file -----
+├── datasets     ------------------- init file -----
+│   ├── __init__.py     ------------------- init file -----
+│   ├── m3.py     ------------------- init file -----
+├── experiments
+│   ├── __init__.py
+│   ├── m3
+│   │   ├── __init__.py
+│   │   ├── generic.gin
+│   │   ├── interpretable.gin
+│   │   └── main.py
+│   ├── model.py
+│   └── trainer.py
+├── models
+│   ├── __init__.py
+│   └── nbeats.py
+├── notebooks
+│   ├── M3.ipynb
+├── storage
+│   ├── datasets
+│   │   └── m3
+│   │       ├── M3C.xls
+│   │       ├── groups.npy
+│   │       ├── horizons.npy
+│   │       ├── ids.npy
+│   │       ├── test.npy
+│   │       └── training.npy
+│   ├── experiments
+│   └── test
+├── summary
+│   ├── __init__.py
+│   ├── m3.py
+│   └── utils.py
+└── test
+    ├── __init__.py
+    ├── __init__.pyc
+    └── summary
+        ├── __init__.py
+        ├── __init__.pyc
+        ├── test_m3.py
+
+        
+```
+
 
 ------------------
 
