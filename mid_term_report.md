@@ -38,13 +38,13 @@ Demo for running an experiment on a bash terminal using N-BEATS for the 1.3Mb M3
 ```sh
 git clone https://github.com/deeptavker/N-BEATS
 cd N-BEATS
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 export PYTHONPATH=$PWD
 export STORAGE=$PWD/storage
-python3 datasets/m3.py M3Dataset download
-python3 experiments/m3/main.py --config_path=$PWD/experiments/m3/generic.gin build_ensemble
-python3 experiments/m3/main.py --config_path=$PWD/experiments/m3/interpretable.gin build_ensemble
-python3 experiments/m3/main.py --config_path=storage/experiments/m3_generic/repeat=3,lookback=4,loss=MAPE/config.gin run
+python datasets/m3.py M3Dataset download
+python experiments/m3/main.py --config_path=$PWD/experiments/m3/generic.gin build_ensemble
+python experiments/m3/main.py --config_path=$PWD/experiments/m3/interpretable.gin build_ensemble
+python experiments/m3/main.py --config_path=storage/experiments/m3_generic/repeat=3,lookback=4,loss=MAPE/config.gin run
 # GENERATED FILE for specific params : storage/experiments/m3_generic/repeat=3,lookback=4,loss=MAPE/forecast.csv
 ```
 ##### 5.2 Analysis of Results
