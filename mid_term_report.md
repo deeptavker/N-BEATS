@@ -59,7 +59,6 @@ python experiments/m3/main.py --config_path=storage/experiments/m3_generic/repea
     ├── experiments
     ├── models
     ├── notebooks
-    ├── processed_files
     ├── storage
     ├── summary
     └── test
