@@ -80,6 +80,16 @@ python experiments/m3/main.py --config_path=storage/experiments/m3_generic/repea
 │       ├── ops.py    
 │       └── snapshots.py    
 ```
+
+**5.3.1.1** `experiment.py` 
+
+This python module defines the base class for building experiment related configuration files based on ensemble parameters and also for specific combinations of *repeats*, *lookbacks* and *losses*. The *instance* method defined in this module is defined on a case to case basis for different experiments. This module is not intended for standalone execution, rather it is used as a supporting script for modules within the *experiments* directory and other custom logic. 
+
+**5.3.1.2** `settings.py`
+
+This python module is used to configure directory paths for datasets, tests and experiment related generated data such as specific config files, snapshots and forecasts. Specifically, as a requirement, it takes in the environment variable named *STORAGE* as input from the environment. This env. var. must be set before proceeding as much of the remaining code for N-BEATS imports this particular module for path related queries. 
+
+
 ###### 5.3.2 datasets
 ```
 ├── datasets    
@@ -99,6 +109,7 @@ python experiments/m3/main.py --config_path=storage/experiments/m3_generic/repea
 │   ├── model.py
 │   └── trainer.py
 ```
+
 ###### 5.3.2 models
 ```
 ├── models
