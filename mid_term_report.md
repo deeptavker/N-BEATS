@@ -158,3 +158,6 @@ This python module is used to configure directory paths for datasets, tests and 
 
 #### 6. Direction for future work
 
+- Extend the architecture for multivariate time series forecasting
+- Extend the architecture for graph convolutions (applications to traffic forecasting models)
+
