@@ -168,4 +168,5 @@ This python module is used to configure directory paths for datasets, tests and 
 #### REFERENCES
 
 [1] - H. Hewamalage, C. Bergmeir and K. Bandara, “Recurrent Neural Networks for Time Series Forecasting: Current status and future directions”, International Journal of Forecasting (2020).
+
 [2] - K. Benidis, S.S. Rangapuram, V. Flunkert, B. Wang, D. Maddix, C. Turkmen, J Gasthaus, M. Bohlke-Schneider, D. Salinas, L. Stella, L. Callot, T. Januschowski, “Neural forecasting: Introduction and literature overview”, Preprint.
