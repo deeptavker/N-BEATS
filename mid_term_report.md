@@ -88,6 +88,18 @@ This python module defines the base class for building experiment related config
 
 This python module is used to configure directory paths for datasets, tests and experiment related generated data such as specific config files, snapshots and forecasts. Specifically, as a requirement, it takes in the environment variable named *STORAGE* as input from the environment. This env. var. must be set before proceeding as much of the remaining code for N-BEATS imports this particular module for path related queries. 
 
+`metrics.py`
+
+This module provides subroutines for commputing various metrics for `forecast` and `target` such as `MASE`, `MAPE`, `ND`, `NRMSE`, `SMAPE1`, `SMAPE2`. Reference for each is provided in the docstrings of respective functions. 
+
+`http_utils.py`
+
+This file provides subroutines for downloading files from the internet and saving them at a specific path. 
+
+`sampler.py`
+
+
+
 
 ###### 5.3.2 datasets
 ```
@@ -96,6 +108,11 @@ This python module is used to configure directory paths for datasets, tests and 
 │   ├── m3.py   
 
 ```
+
+`m3.py`
+
+This python script is a helper module for downloading the m3 dataset and generating required `.npy` files for training and testing. It downloads the main dataset file `m3.xls` from `https://forecasters.org/data/m3comp/M3C.xls` and puts it in `storage/datasets/m3/`. Following the download, the script reads the dataset using a pandas dataframe and breaks it down into multiple `.npy` files viz. `horizons.npy`, `ids.npy`, `groups.npy`, `test.npy` and `training.npy`. The test-train split at this stage is dictated by the horizon value. The metadata for horizons is pre-loaded. There are 4 different seasonal patterns {year, quart, month, other} for which data is availble across various groups {macro, industry, finance, micro, demographic, others}. 
+
 ###### 5.3.2 experiments
 ```
 ├── experiments
@@ -108,6 +125,11 @@ This python module is used to configure directory paths for datasets, tests and 
 │   ├── model.py
 │   └── trainer.py
 ```
+
+`m3/main.py`
+
+This module implements the `instance` method for the `Experiment` class in `common/experiment.py`. In this implementation, this module uses modules from `common`, `experiment` and `summary` directories from `$PYTHONPATH` to create training sets and then trains those set on the model that is either `generic` or `interpretable`. It saves the forecast in a specific directory which is defined by the implementation of `Experiment` in `common/experiment.py`. It uses the `fire` library in order to take command line arguments which defines the `gin config` to be used and whether the script will **build ensemble config files** or **run a specific experiment** based on particular values of `loss`, `lookback` and `repeat`. This file also provides a subroutine to load the generated `.npy` files during an experiment. When used with an argument of `build_ensemble` it requires a `gin config` file in order to generate multiple config files in `storage/experiments/m3_generic` or `storage/experiments/m3_interpretable`. There config files reperesent various combinations of `loss`, `repeat` and `lookback` which can be run individually or in parallel. A `forecast` file for each combination of the aforementioned three parameters is generated in respective directories within `storage/experiments/`.  
+
 
 ###### 5.3.2 models
 ```
