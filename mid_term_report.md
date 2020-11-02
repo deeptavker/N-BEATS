@@ -13,17 +13,24 @@
 
 #### 1. Literature Review
 
+Neural networks based models for time series forecasting is gaining a lot of attention in academic research. Despite this, classical models like ARIMA are still widely used in practice. One major reason is that neural network models are seen as more complex, and require larger data sets to perform well. Classical models, on the other hand, have a reputation for being quite accurate and robust. Moreover, they are simple and easy to operate, making it attractive for non-expert users. Nevertheless, neural networks are growing more popular because they can model more general relationships in the data set, especially non-linearities. [1] 
+
+Now, we comment on three common basic units of a neural network in the context of time series forecasting - multilayer perceptron (MLP), convolutional neural network (CNN) and recurrent neural network (RNN) [2]. When dealing with time series data, MLPs have a few shortcomings. Firstly, they have fixed number of inputs, and cannot deal with time series data of different lengths. They also don’t fully exploit the structure of time series data, that is they don’t interpret the input as sequential data. One possible suggestion is to explicitly give time in the input, so that MLPs adapt to the sequential nature of time series data. But, this has another problem- it cannot detect time invariant patterns very well. RNNs and CNNs are better-suited to time series forecasting than MLPs. Their architectures are designed to account for sequential nature of data- CNNs use filters that are shared across time steps while RNNs have information (as ‘hidden states’) of previous time steps fed to the future time steps. Since the dimensions of the weights matrices and filters used in RNNs and CNNs don’t depend on the length of input data, they can also handle time series data of variable lengths.
+
+< N-BEATS has a MLP structure but with residual connections. Any similarities to RNN. Discuss this and relate to previous para. >
+
+In our main paper [3], N-BEATS has a sequence-to-sequence model, that is input sequences are directly used to predict the output sequence for the entire future horizon. This is different from models that predict a single future time step and feed these predictions as inputs in the same models to predict the next future time steps. These models suffer from an accumulation of forecast errors, while N-BEATS and other sequence-to-sequence models don't. In this report, we have mainly reviewed sequence-to-sequence models. The next section summarises some such models that we found interesting from works done prior to [3].
+
 ------------------
 
-#### 2. Main Paper
+#### 2. Three papers which inspired NBEATS
+------------------
+
+#### 3. Main Paper
 
 ------------------
 
-#### 3. Three papers which build up on NBEATS
-
-------------------
-
-#### 4. Three papers which inspired NBEATS
+#### 4. Three papers which build up on NBEATS
 
 ------------------
 
@@ -180,3 +187,13 @@ This module implements the `instance` method for the `Experiment` class in `comm
 
 #### 6. Direction for future work
 
+- Bayesian unertainty measures for detecting drifts in time series forecasts. 
+- Modification of ensembling techniques (no training alteration) 
+
+#### REFERENCES
+
+[1] - H. Hewamalage, C. Bergmeir and K. Bandara, “Recurrent Neural Networks for Time Series Forecasting: Current status and future directions”, International Journal of Forecasting (2020).
+
+[2] - K. Benidis, S.S. Rangapuram, V. Flunkert, B. Wang, D. Maddix, C. Turkmen, J Gasthaus, M. Bohlke-Schneider, D. Salinas, L. Stella, L. Callot, T. Januschowski, “Neural forecasting: Introduction and literature overview”, Preprint.
+
+[3] - B.N. Oreshkin, D. Carpov, N. Chapados and Y. Bengio, "N-BEATS: Neural Basis Expansion Analysis for interpretable Time Series forecasting", ICLR (2020)
