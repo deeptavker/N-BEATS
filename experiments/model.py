@@ -19,7 +19,7 @@ import gin
 import numpy as np
 import torch as t
 
-from models.nbeats import GenericBasis, NBeats, NBeatsBlock, SeasonalityBasis, TrendBasis
+from models.nbeats import GenericBasis, NBeats, NBeatsBlock, SeasonalityBasis, TrendBasis, CNNBlock
 
 
 @gin.configurable()
@@ -68,4 +68,4 @@ def generic(input_size: int, output_size: int,
                                                                            forecast_size=output_size),
                                                layers=layers,
                                                layer_size=layer_size)
-                                   for _ in range(stacks)]))
+                                   for _ in range(stacks * 3)] + [CNNBlock()]))

@@ -21,6 +21,19 @@ import numpy as np
 import torch as t
 
 
+class CNNBlock(t.nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.convs = t.nn.Conv1d(1, 3, 5, 1, 2)
+
+    def forward(self, x):
+        d3 = x.shape[0]
+        d1 = x.shape[1]
+        conv_inp = x.reshape((d1, 1, d3)) #doubtful 
+        out = self.convs(conv_inp)
+        out = out.reshape(3, d3, d1) #doubtful
+        return out
+
 class NBeatsBlock(t.nn.Module):
     """
     N-BEATS block which takes a basis function as an argument.
@@ -64,14 +77,41 @@ class NBeats(t.nn.Module):
         self.blocks = blocks
 
     def forward(self, x: t.Tensor, input_mask: t.Tensor) -> t.Tensor:
-        residuals = x.flip(dims=(1,))
+        
         input_mask = input_mask.flip(dims=(1,))
-        forecast = x[:, -1:]
-        for i, block in enumerate(self.blocks):
-            backcast, block_forecast = block(residuals)
-            residuals = (residuals - backcast) * input_mask
-            forecast = forecast + block_forecast
+        
+        x1, x2, x3 = self.blocks[-1](x)
+        r1, r2, r3 = x1.flip(dims=(1,)), x2.flip(dims=(1,)), x3.flip(dims=(1,))
+        f1, f2, f3 = x1[:, -1:], x2[:, -1:], x3[:, -1:]
+
+        nb_blocks = self.blocks[:-1]
+        nb = len(nb_blocks)
+
+        blocks1 = nb_blocks[:nb//3]
+        blocks2 = nb_blocks[nb//3:nb*2//3]
+        blocks3 = nb_blocks[nb*2//3:]
+
+        for i, block in enumerate(blocks1):
+            backcast, block_forecast = block(r1)
+            r1 = (r1 - backcast) * input_mask
+            f1 = f1 + block_forecast
+
+        for i, block in enumerate(blocks2):
+            backcast, block_forecast = block(r2)
+            r2 = (r2 - backcast) * input_mask
+            f2 = f2 + block_forecast
+
+        for i, block in enumerate(blocks3):
+            backcast, block_forecast = block(r3)
+            r3 = (r3 - backcast) * input_mask
+            f3 = f3 + block_forecast
+        
+        forecast = self.combine(f1, f2, f3)
+        
         return forecast
+        
+    def combine(self, a1, a2, a3):
+        return (a1 + a2 + a3) / 3.0
 
 
 class GenericBasis(t.nn.Module):
